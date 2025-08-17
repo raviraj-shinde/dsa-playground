@@ -46,13 +46,26 @@ public class Preorder {
         
     }
 
+    public static void inOrderTraversal(Node root){
+        //base condtion
+        if (root == null){
+            //System.out.print(" -1");
+            return;
+        }
+        //work
+        
+        inOrderTraversal(root.left); 
+        System.out.print(" " + root.data);
+        inOrderTraversal(root.right);
+
+    } 
     public static void main(String[] args) {
         int[] tree = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
         idx = 0; // reset before building
         Node root = preOrderTree(tree);
         System.out.println(root.data); // should print 1
-        preOrderTraversal(root);
-
-
+        preOrderTraversal(root);  
+        System.out.println();
+        inOrderTraversal(root);  
     }
 }
