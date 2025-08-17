@@ -33,10 +33,26 @@ public class Preorder {
         return node;
     }
 
+    public static void preOrderTraversal(Node root){
+        //base condition
+        if(root == null){
+            System.out.print("-1 ");
+            return;
+        }
+        //work
+        System.out.print("" + root.data + " ");
+        preOrderTraversal(root.left); 
+        preOrderTraversal(root.right);
+        
+    }
+
     public static void main(String[] args) {
         int[] tree = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
         idx = 0; // reset before building
         Node root = preOrderTree(tree);
         System.out.println(root.data); // should print 1
+        preOrderTraversal(root);
+
+
     }
 }
