@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Preorder {
+public class Tree {
 
   static class Node {
 
@@ -81,13 +81,13 @@ public class Preorder {
     queue.offer(null);
 
     while (!queue.isEmpty()) {
-      if(queue.peek() != null){
-        Node node = queue.poll();
+      Node node = queue.poll();
+      if(node != null){
         System.out.print(" " + node.data);
         if(node.left != null) queue.offer(node.left);
         if(node.right != null) queue.offer(node.right);
       } else {
-          queue.poll();
+        System.out.println();
           if (queue.isEmpty()) return;
           queue.offer(null);
       }
