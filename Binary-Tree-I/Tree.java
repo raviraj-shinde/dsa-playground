@@ -73,7 +73,7 @@ public class Tree {
     System.out.print(" " + root.data);
   }
 
-  //By BFS, for DFS - recursion (int Level)
+  //By BFS - Queue (Null - Val), for DFS - recursion (int Level)
   public static void levelOrderTraversal(Node root) {
     //offer-poll-peek()
     Queue<Node> queue = new LinkedList<>();
@@ -82,16 +82,27 @@ public class Tree {
 
     while (!queue.isEmpty()) {
       Node node = queue.poll();
-      if(node != null){
+      if (node != null) {
         System.out.print(" " + node.data);
-        if(node.left != null) queue.offer(node.left);
-        if(node.right != null) queue.offer(node.right);
+        if (node.left != null) queue.offer(node.left);
+        if (node.right != null) queue.offer(node.right);
       } else {
         System.out.println();
-          if (queue.isEmpty()) return;
-          queue.offer(null);
+        if (queue.isEmpty()) return;
+        queue.offer(null);
       }
-    } 
+    }
+  }
+
+  public static int findHeight(Node node, int height) {
+    if (node == null) {
+      return height - 1;
+    }
+
+    return Math.max(
+      findHeight(node.left, height + 1),
+      findHeight(node.right, height + 1)
+    );
   }
 
   public static void main(String[] args) {
@@ -100,11 +111,16 @@ public class Tree {
     Node root = preOrderTree(tree);
     System.out.println(root.data); // should print 1
     preOrderTraversal(root);
-    System.out.println();
+    System.out.println("*************************");
+
     inOrderTraversal(root);
     System.out.println();
     postOrderTraversal(root);
-    System.out.println();
+    System.out.println("*************************");
+
     levelOrderTraversal(root);
+    System.out.println("*************************");
+
+    System.out.println(findHeight(root, 1));
   }
 }
