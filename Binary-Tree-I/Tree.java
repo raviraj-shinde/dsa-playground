@@ -108,6 +108,11 @@ public class Tree {
     return countNodes(root.left) + countNodes(root.right) + 1;
   }
 
+  public static int sumOfNodes(Node root) {
+    if (root == null) return 0;
+    return sumOfNodes(root.left) + sumOfNodes(root.right) + root.data; //self
+  }
+
   public static void main(String[] args) {
     int[] tree = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
     idx = 0; // reset before building
@@ -128,6 +133,9 @@ public class Tree {
     System.out.println("*************************");
 
     System.out.println("Total Nodes in a Tree:- " + countNodes(root));
+    System.out.println("*************************");
+
+    System.out.println("Total Sum  of a Nodes data in Tree:- " + sumOfNodes(root));
     System.out.println("*************************");
   }
 }
