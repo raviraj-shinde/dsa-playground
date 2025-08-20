@@ -94,15 +94,12 @@ public class Tree {
     }
   }
 
-  public static int findHeight(Node node, int height) {
+  public static int findHeight(Node node) {
     if (node == null) {
-      return height - 1;
+      return 0;
     }
 
-    return Math.max(
-      findHeight(node.left, height + 1),
-      findHeight(node.right, height + 1)
-    );
+    return Math.max(findHeight(node.left), findHeight(node.right)) + 1; //self add +1
   }
 
   public static void main(String[] args) {
@@ -121,6 +118,6 @@ public class Tree {
     levelOrderTraversal(root);
     System.out.println("*************************");
 
-    System.out.println(findHeight(root, 1));
+    System.out.println(findHeight(root));
   }
 }
