@@ -61,7 +61,6 @@ public class TopViewOfTree {
   }
 
   static class Info {
-
     Node node;
     int hd;
 
